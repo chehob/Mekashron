@@ -1,0 +1,106 @@
+﻿<style>
+#content {
+    max-width: 450px;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    padding: 30px;    
+}
+
+html {
+  font-size: 14px;
+}
+
+@@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.footer[b-wagd9rwamj] {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+}
+</style>
+
+<div class="container" id="content">
+    <div class="form-outline mb-4">
+    <input type="email" id="userName" class="form-control" placeholder="Email"/>
+    </div>
+    
+    <div class="form-outline mb-4">
+    <input type="password" id="password" class="form-control" placeholder="Password" />
+    </div>
+
+    <button type="button" class="btn btn-primary btn-block mb-4" id="loginBtn">Login</button>
+
+    <div id="successDiv" class="card card-success" style="display:none;">
+        <div class="card-header bg-success text-white">Success</div>
+        <div class="card-body">
+           Entity ID: <span id="entityId"></span><br />
+           First Name: <span id="firstName"></span><br />
+           Last Name: <span id="lastName"></span><br />
+           Mobile: <span id="mobile"></span><br />
+        </div>   
+    </div>
+
+    <div id="errorDiv" class="card panel-danger" style="display:none;">
+        <div class="card-header bg-danger text-white">Error</div>
+        <div class="card-body">
+            <span id="errorMsg"></span>
+        </div>        
+    </div>
+</div>
+
+<script>
+    document.getElementById("loginBtn").onclick = function (e) {
+        document.getElementById("successDiv").style.display = 'none';
+        document.getElementById("errorDiv").style.display = 'none';
+
+        const sendJsonData = {
+            userName: document.getElementById("userName").value,
+            password: document.getElementById("password").value
+        };
+
+        e.preventDefault();
+
+        fetch("/Home/Login", {
+            method: 'POST',
+            body: JSON.stringify(sendJsonData),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }).then((response) => {
+            return response.json();            
+        }).then((res) => {
+            console.log(res);
+            if(res.resultCode == -1)
+            {
+                document.getElementById("errorMsg").textContent = res.resultMessage;
+                document.getElementById("errorDiv").style.display = 'block';
+            }
+            else
+            {
+                document.getElementById("entityId").textContent = res.entityId;
+                document.getElementById("firstName").textContent = res.firstName;
+                document.getElementById("lastName").textContent = res.lastName;
+                document.getElementById("mobile").textContent = res.mobile;
+                document.getElementById("successDiv").style.display = 'block';
+            }
+        }).catch((error) => {
+            console.log("error: " + error);
+        });
+    };
+</script>

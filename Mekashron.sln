@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32414.318
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mekashron", "Mekashron\Mekashron.csproj", "{9D3DD658-BA7D-4128-A141-9294610B25FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9D3DD658-BA7D-4128-A141-9294610B25FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D3DD658-BA7D-4128-A141-9294610B25FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D3DD658-BA7D-4128-A141-9294610B25FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D3DD658-BA7D-4128-A141-9294610B25FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9FB58FB9-BD74-4030-96B0-BF639F209E4F}
+	EndGlobalSection
+EndGlobal
